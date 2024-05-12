@@ -55,4 +55,18 @@ describe("Backend tests", () => {
         expect(data[data.length-1].value).to.equal("exam prep");
         expect(data[data.length-1].important).to.equal(true);
     });
+
+    test('delete item', async () => {
+        const url = 'http://localhost:3001/delete';
+        const response = await axios.post(url, {id:1});
+        expect(response.status).to.equal(200);
+        console.log(response.data.message);
+        expect(response.data.message).to.equal("id=1 deleted");
+        
+        // const response2 = await fetch('http://localhost:3001/items');
+        // expect(response2.ok).toBe(true);
+        // let data = await response2.json();
+        // expect(data[data.length-1].value).to.equal("exam prep");
+        // expect(data[data.length-1].important).to.equal(true);
+    });
 });

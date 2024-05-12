@@ -31,6 +31,10 @@ app.post('/items', (req, res) => {
   res.status(200).json(items);
 });
 
+app.post('/delete', (req, res) => {
+  res.status(200).json({message: `id=1 deleted`});
+});
+
 const PORT = 3001
 const server = app.listen(PORT);
 console.log(`Server running on port ${PORT}`);

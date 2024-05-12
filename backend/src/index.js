@@ -19,13 +19,16 @@ app.get('/items', (req, res) => {
 });
 
 app.post('/items', (req, res) => {
+  const newItem = req.body;
+  if (!newItem || !newItem.value) {
+    res.status(200).json(items);
+    return;
+  }
+  maxId += 1;
+  newItem.id = this.maxId;
+  items.push(newItem);
+  newItem.id = maxId;
   res.status(200).json(items);
-  // const newItem = req.body;
-  // maxId += 1;
-  // newItem.id = this.maxId;
-  // items.push(newItem);
-  // newItem.id = maxId;
-  // res.status(200).json(items);
 });
 
 const PORT = 3001

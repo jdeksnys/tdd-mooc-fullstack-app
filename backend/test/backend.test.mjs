@@ -30,7 +30,7 @@ describe("Backend tests", () => {
     });
 
 
-    test.skip('add todo item', async () => {
+    test('add todo item', async () => {
         let item = {id:null, value:"exam prep", important:true};
         const url = 'http://localhost:3001/items';
         const response = await axios.post(url, item);
@@ -48,10 +48,11 @@ describe("Backend tests", () => {
         const url = 'http://localhost:3001/items';
         const response = await axios.post(url, item);
         expect(response.status).to.equal(200);
+        
         const response2 = await fetch('http://localhost:3001/items');
         expect(response2.ok).toBe(true);
         let data = await response2.json();
-        expect(data[data.length-1].value).to.equal("finish homework");
+        expect(data[data.length-1].value).to.equal("exam prep");
         expect(data[data.length-1].important).to.equal(true);
     });
 });

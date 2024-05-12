@@ -19,7 +19,11 @@ app.get('/items', (req, res) => {
 });
 
 app.post('/items', (req, res) => {
-  items.push({id:3, value:"exam prep", important:true})
+  const newItem = req.body;
+  maxId += 1;
+  newItem.id = this.maxId;
+  items.push(newItem);
+  newItem.id = maxId;
   res.status(200).json(items);
 });
 

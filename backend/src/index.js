@@ -3,11 +3,11 @@ const express = require('express')
 
 const app = express()
 
-app.get('/all', (request, response) => {
+app.get('/items', (request, response) => {
   response.json(items);
 })
 
-app.get('/id/:id', (req, res) => {
+app.get('/items/:id', (req, res) => {
   res.json(items[0]);
 });
 

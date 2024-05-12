@@ -9,6 +9,8 @@ app.get('/items', (req, res) => {
     const item = items.find(rec => rec.id === id);
     if (item) {
       res.json([item]);
+    } else {
+      res.status(404).send("not found");
     }
   } else {
     res.json(items);

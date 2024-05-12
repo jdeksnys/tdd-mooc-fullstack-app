@@ -22,4 +22,10 @@ describe("Backend tests", () => {
         expect(data[0].value).to.equal("do the laundry");
         expect(data[0].important).to.equal(false);
     });
+
+    test('get todo items by bad id', async () => {
+        const response = await fetch(`http://localhost:3001/items?id=99`);
+        expect(response.ok).toBe(false);
+        expect(response.status).toBe(404);
+    });
 });

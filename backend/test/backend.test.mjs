@@ -63,10 +63,10 @@ describe("Backend tests", () => {
         console.log(response.data.message);
         expect(response.data.message).to.equal("id=1 deleted");
         
-        // const response2 = await fetch('http://localhost:3001/items');
-        // expect(response2.ok).toBe(true);
-        // let data = await response2.json();
-        // expect(data[data.length-1].value).to.equal("exam prep");
-        // expect(data[data.length-1].important).to.equal(true);
+        const response2 = await fetch('http://localhost:3001/items');
+        expect(response2.ok).toBe(true);
+        let data = await response2.json();
+        expect(data[0].value).to.equal("finish homework");
+        expect(data[0].important).to.equal(true);
     });
 });

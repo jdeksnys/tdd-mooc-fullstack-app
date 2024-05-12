@@ -4,11 +4,12 @@ import app from '../src/index.js';
 
 afterAll(() => app.close());
 
-describe("Backed tests", () => {
-    test('GET / responds with Hello World!', async () => {
+describe("Backend tests", () => {
+    test('get all todo items', async () => {
         const response = await fetch('http://localhost:3001/');
         expect(response.ok).toBe(true);
-        const text = await response.text();
-        expect(text).toContain('<h1>hahaha</h1>');
+        let data = await response.json();
+        expect(data[0].value).to.equal("do the laundry");
+        expect(data[0].important).to.equal(false);
     });
 });

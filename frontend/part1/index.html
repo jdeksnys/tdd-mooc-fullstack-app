@@ -34,23 +34,11 @@
             <td><button onclick="deleteTodo()">Delete</button></td>
         </tr>
     </table>
-    
+
     <button onclick="deleteAll()">Delete All</button>
 </div>
 </body>
 
-<script>
-  function addTodo() {
-      var newTodo = document.getElementById("newTodoInput").value;
-      alert("Added: " + newTodo);
-  }
-
-  function deleteTodo() {
-      alert("Deleted todo item");
-  }
-
-  function deleteAll() {
-      alert("All todo items deleted");
-  }
-</script>
+<!-- <script src="./src/communication.js"></script>
+<script>getItems('listTable');</script> -->
 </html>

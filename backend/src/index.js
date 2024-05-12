@@ -32,7 +32,9 @@ app.post('/items', (req, res) => {
 });
 
 app.post('/delete', (req, res) => {
-  res.status(200).json({message: `id=1 deleted`});
+  const id = parseInt(req.body.id);
+  items = items.filter(rec => rec.id != id);
+  res.status(200).json({message: `id=${id} deleted`});
 });
 
 const PORT = 3001

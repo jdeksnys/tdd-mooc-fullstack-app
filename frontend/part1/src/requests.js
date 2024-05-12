@@ -11,6 +11,10 @@ async function getItems(tableId) {
       const cell = document.createElement('td');
       const cell_imp = document.createElement('td');
       const checkbox = document.createElement('input');
+      const hidden_id = document.createElement('p');
+      
+      hidden_id.innerText = item.id;
+      hidden_id.style.display = 'none';
       cell.innerText = item.value;
       checkbox.type = 'checkbox';
       checkbox.checked = item.important;
@@ -19,6 +23,14 @@ async function getItems(tableId) {
       row.appendChild(cell);
       row.appendChild(cell_imp);
       tableBody.appendChild(row);
+      row.appendChild(hidden_id);
+
+      const del_btn = document.createElement('button');
+      del_btn.innerText = "delete";
+      del_btn.addEventListener('click', () => {
+        deleteTodo(event, hidden_id.innerText);
+      });
+      row.appendChild(del_btn);
     });
   } catch (error) {
     console.error(error);
@@ -42,6 +54,25 @@ async function addTodo(e){
           alert("Error in saving todo");
         } else {
             elem.value = "";
+            getItems("todoTable");
+        }
+    });
+};
+
+
+async function deleteTodo(e, id_){
+    e.preventDefault();
+    let data = {id:id_};
+    let url = 'http://localhost:3001/delete';
+
+    await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+          alert("Error in deleting todo");
+        } else {
             getItems("todoTable");
         }
     });

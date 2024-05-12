@@ -8,7 +8,8 @@ app.get('/items', (request, response) => {
 })
 
 app.get('/items/:id', (req, res) => {
-  res.json(items[0]);
+  let id = parseInt(req.params.id);
+  res.json(items.find(rec => rec.id == id));
 });
 
 const PORT = 3001

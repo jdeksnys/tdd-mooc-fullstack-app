@@ -11,34 +11,13 @@
     
     <input type="text" id="newTodoInput" placeholder="Add new todo item">
     <button onclick="addTodo()">Add</button>
-    
-    <table id="todoList">
-        <tr>
-            <th>Name</th>
-            <th>Important</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>Example Todo 1</td>
-            <td><input type="checkbox" class="importantCheckbox"></td>
-            <td><button onclick="deleteTodo()">Delete</button></td>
-        </tr>
-        <tr>
-            <td>Example Todo 2</td>
-            <td><input type="checkbox" class="importantCheckbox"></td>
-            <td><button onclick="deleteTodo()">Delete</button></td>
-        </tr>
-        <tr>
-            <td>Example Todo 3</td>
-            <td><input type="checkbox" class="importantCheckbox"></td>
-            <td><button onclick="deleteTodo()">Delete</button></td>
-        </tr>
+    <table id="todoTable">
     </table>
 
     <button onclick="deleteAll()">Delete All</button>
 </div>
 </body>
 
-<!-- <script src="./src/communication.js"></script>
-<script>getItems('listTable');</script> -->
+<script src="./src/requests.js"></script>
+<script>getItems('todoTable');</script>
 </html>

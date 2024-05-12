@@ -1,5 +1,7 @@
 # TDD: Full-stack web app
 
+Tests in `backend/test/backend.test.mjs`.
+
 ## Run backend
 Navigate to backend directory:
 ```

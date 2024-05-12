@@ -15,6 +15,7 @@ app.get('/items', (req, res) => {
       res.status(404).send("not found");
     }
   } else {
+    items.sort((a, b) => a.id - b.id);
     res.json(items);
   }
 });
@@ -42,16 +43,17 @@ app.post('/delete', (req, res) => {
   res.status(200).json({message: `id=${id} deleted`});
 });
 
-app.post('/important', (req, res) => {
+app.post('/completed', (req, res) => {
   const id = parseInt(req.body.id);
     if (!id || !items.find(rec => rec.id === id)) {
       res.status(200).json({message: `id=${id} not found`});
     return;
   }
   const item = items.find(rec => rec.id === id);
-  item.important = !item.important;
+  item.completed = !item.completed;
   items = items.filter(rec => rec.id != id);
   items.push(item);
+  items.sort((a, b) => a.id - b.id);
   res.status(200).end();
 });
 
@@ -65,12 +67,12 @@ let items = [
   {
     id: 1,
     value: "do the laundry",
-    important: false
+    completed: false
   },
   {
     id: 2,
     value: "finish homework",
-    important: true
+    completed: true
   }
 ]
 let maxId = 2;

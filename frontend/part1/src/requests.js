@@ -17,14 +17,14 @@ async function getItems(tableId) {
       hidden_id.style.display = 'none';
       cell.innerText = item.value;
       checkbox.type = 'checkbox';
-      checkbox.checked = item.important;
+      checkbox.checked = item.completed;
 
       cell_imp.appendChild(checkbox);
       row.appendChild(cell);
       row.appendChild(cell_imp);
       row.appendChild(hidden_id);
       checkbox.addEventListener('click', () => {
-          toggleImportance(event, hidden_id.innerText);
+          toggleCompleted(event, hidden_id.innerText);
       });
 
       const del_btn = document.createElement('button');
@@ -45,7 +45,7 @@ async function addTodo(e){
     e.preventDefault();
     let elem = document.getElementById("newInput");
     let text = elem.value;
-    let item = {id:null, value:text, important:false};
+    let item = {id:null, value:text, completed:false};
     let url = 'http://localhost:3001/items';
 
     await fetch(url, {
@@ -82,9 +82,9 @@ async function deleteTodo(e, id_){
 };
 
 
-async function toggleImportance(e, id_){
+async function toggleCompleted(e, id_){
     let data = {id:id_};
-    let url = 'http://localhost:3001/important';
+    let url = 'http://localhost:3001/completed';
     await fetch(url, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

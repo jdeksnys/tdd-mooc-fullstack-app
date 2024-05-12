@@ -4,10 +4,53 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>ToDo app</title>
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  <div id="todoApp">
+    <h2>To-Do Application</h2>
+    
+    <input type="text" id="newTodoInput" placeholder="Add new todo item">
+    <button onclick="addTodo()">Add</button>
+    
+    <table id="todoList">
+        <tr>
+            <th>Name</th>
+            <th>Important</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>Example Todo 1</td>
+            <td><input type="checkbox" class="importantCheckbox"></td>
+            <td><button onclick="deleteTodo()">Delete</button></td>
+        </tr>
+        <tr>
+            <td>Example Todo 2</td>
+            <td><input type="checkbox" class="importantCheckbox"></td>
+            <td><button onclick="deleteTodo()">Delete</button></td>
+        </tr>
+        <tr>
+            <td>Example Todo 3</td>
+            <td><input type="checkbox" class="importantCheckbox"></td>
+            <td><button onclick="deleteTodo()">Delete</button></td>
+        </tr>
+    </table>
+    
+    <button onclick="deleteAll()">Delete All</button>
+</div>
+</body>
+
+<script>
+  function addTodo() {
+      var newTodo = document.getElementById("newTodoInput").value;
+      alert("Added: " + newTodo);
+  }
+
+  function deleteTodo() {
+      alert("Deleted todo item");
+  }
+
+  function deleteAll() {
+      alert("All todo items deleted");
+  }
+</script>
 </html>

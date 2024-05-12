@@ -1,17 +1,25 @@
 # TDD: Full-stack web app
 
 ## Run backend
- Navigate to backend directory:
- ```cd backend```
+Navigate to backend directory:
+```
+cd backend
+```
  
 Run on default port 3001:
- ```npm start```
+```
+npm start
+```
 
 
 ## Run frontend
 
- Navigate to frontend directory:
- ```cd frontend/part1```
+Navigate to frontend directory:
+```
+cd frontend/part1
+```
 
 Run on default port 5173:
- ```npm run dev```
+```
+npm run dev
+```

@@ -9,8 +9,11 @@
   <div id="todoApp">
     <h2>To-Do Application</h2>
     
-    <input type="text" id="newTodoInput" placeholder="Add new todo item">
-    <button onclick="addTodo()">Add</button>
+    <form onsubmit="addTodo(event)">
+        <input type="text" id="newInput" placeholder="Add todo item">
+        <button type="submit">Add</button>
+    </form>
+      
     <table id="todoTable">
     </table>
 
@@ -20,4 +23,5 @@
 
 <script src="./src/requests.js"></script>
 <script>getItems('todoTable');</script>
+
 </html>

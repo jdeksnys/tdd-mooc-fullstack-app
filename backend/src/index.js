@@ -29,7 +29,7 @@ app.post('/items', (req, res) => {
   newItem.id = this.maxId;
   items.push(newItem);
   newItem.id = maxId;
-  res.status(200).json(items);
+  res.status(200).end();
 });
 
 app.post('/delete', (req, res) => {

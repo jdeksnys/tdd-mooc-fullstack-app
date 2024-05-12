@@ -12,4 +12,12 @@ describe("Backend tests", () => {
         expect(data[0].value).to.equal("do the laundry");
         expect(data[0].important).to.equal(false);
     });
+
+    test('get todo items by id', async () => {
+        const response = await fetch(`http://localhost:3001/id/1`);
+        expect(response.ok).toBe(true);
+        let data = await response.json();
+        expect(data.value).to.equal("do the laundry");
+        expect(data.important).to.equal(false);
+    });
 });

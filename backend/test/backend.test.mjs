@@ -6,7 +6,7 @@ afterAll(() => app.close());
 
 describe("Backend tests", () => {
     test('get all todo items', async () => {
-        const response = await fetch('http://localhost:3001/');
+        const response = await fetch('http://localhost:3001/all');
         expect(response.ok).toBe(true);
         let data = await response.json();
         expect(data[0].value).to.equal("do the laundry");

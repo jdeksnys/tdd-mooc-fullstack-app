@@ -3,7 +3,7 @@ const express = require('express')
 
 const app = express()
 
-app.get('/', (request, response) => {
+app.get('/all', (request, response) => {
   response.json(items);
 })
 

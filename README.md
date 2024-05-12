@@ -13,5 +13,5 @@ Run on default port 3001:
  Navigate to frontend directory:
  ```cd frontend/part1```
 
-Run on default port :
+Run on default port 5173:
  ```npm run dev```

@@ -36,3 +36,4 @@ let items = [
     important: true
   }
 ]
+let maxId = 2;

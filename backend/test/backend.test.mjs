@@ -1,6 +1,7 @@
 import { expect, afterAll, test, describe } from 'vitest';
 import fetch from 'node-fetch';
 import app from '../src/index.js';
+import axios from "axios";
 
 afterAll(() => app.close());
 

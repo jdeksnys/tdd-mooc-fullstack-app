@@ -56,6 +56,20 @@ describe("Backend tests", () => {
         expect(data[data.length-1].important).to.equal(true);
     });
 
+    test('delete item false id', async () => {
+        const url = 'http://localhost:3001/delete';
+        const response = await axios.post(url, {id:99});
+        expect(response.status).to.equal(200);
+        console.log(response.data.message);
+        expect(response.data.message).to.equal("id=99 not found");
+        
+        const response2 = await fetch('http://localhost:3001/items');
+        expect(response2.ok).toBe(true);
+        let data = await response2.json();
+        expect(data[0].value).to.equal("do the laundry");
+        expect(data[0].important).to.equal(false);
+    });
+
     test('delete item', async () => {
         const url = 'http://localhost:3001/delete';
         const response = await axios.post(url, {id:1});

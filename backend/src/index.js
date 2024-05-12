@@ -33,6 +33,10 @@ app.post('/items', (req, res) => {
 
 app.post('/delete', (req, res) => {
   const id = parseInt(req.body.id);
+    if (!id || !items.find(rec => rec.id === id)) {
+    res.status(200).json({message: `id=${id} not found`});
+    return;
+  }
   items = items.filter(rec => rec.id != id);
   res.status(200).json({message: `id=${id} deleted`});
 });

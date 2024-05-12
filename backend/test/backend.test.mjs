@@ -14,9 +14,10 @@ describe("Backend tests", () => {
     });
 
     test('get todo items by ok id', async () => {
-        const response = await fetch(`http://localhost:3001/items?id=1`);
+        const response = await fetch("http://localhost:3001/items?id=1");
         expect(response.ok).toBe(true);
         let data = await response.json();
+        console.log(data);
         expect(data.length).to.equal(1);
         expect(data[0].value).to.equal("do the laundry");
         expect(data[0].important).to.equal(false);

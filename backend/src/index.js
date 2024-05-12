@@ -3,14 +3,18 @@ const express = require('express')
 
 const app = express()
 
-app.get('/items', (request, response) => {
-  response.json(items);
-})
-
-app.get('/items/:id', (req, res) => {
-  let id = parseInt(req.params.id);
-  res.json(items.find(rec => rec.id == id));
+app.get('/items', (req, res) => {
+  const id = parseInt(req.query.id);
+  if (id) {
+    const item = items.find(rec => rec.id === id);
+    if (item) {
+      res.json([item]);
+    }
+  } else {
+    res.json(items);
+  }
 });
+
 
 const PORT = 3001
 const server = app.listen(PORT);
@@ -23,5 +27,10 @@ let items = [
     id: 1,
     value: "do the laundry",
     important: false
+  },
+  {
+    id: 2,
+    value: "finish homework",
+    important: true
   }
 ]

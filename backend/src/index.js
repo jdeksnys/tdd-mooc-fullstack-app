@@ -2,6 +2,7 @@
 const express = require('express')
 
 const app = express()
+app.use(express.json());
 
 app.get('/items', (req, res) => {
   const id = parseInt(req.query.id);
@@ -17,6 +18,10 @@ app.get('/items', (req, res) => {
   }
 });
 
+app.post('/items', (req, res) => {
+  items.push({id:3, value:"exam prep", important:true})
+  res.status(200).json(items);
+});
 
 const PORT = 3001
 const server = app.listen(PORT);

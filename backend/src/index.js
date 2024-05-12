@@ -42,6 +42,19 @@ app.post('/delete', (req, res) => {
   res.status(200).json({message: `id=${id} deleted`});
 });
 
+app.post('/important', (req, res) => {
+  const id = parseInt(req.body.id);
+    if (!id || !items.find(rec => rec.id === id)) {
+      res.status(200).json({message: `id=${id} not found`});
+    return;
+  }
+  const item = items.find(rec => rec.id === id);
+  item.important = !item.important;
+  items = items.filter(rec => rec.id != id);
+  items.push(item);
+  res.status(200).end();
+});
+
 const PORT = 3001
 const server = app.listen(PORT);
 console.log(`Server running on port ${PORT}`);

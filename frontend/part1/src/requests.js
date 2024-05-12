@@ -22,8 +22,10 @@ async function getItems(tableId) {
       cell_imp.appendChild(checkbox);
       row.appendChild(cell);
       row.appendChild(cell_imp);
-      tableBody.appendChild(row);
       row.appendChild(hidden_id);
+      checkbox.addEventListener('click', () => {
+          toggleImportance(event, hidden_id.innerText);
+      });
 
       const del_btn = document.createElement('button');
       del_btn.innerText = "delete";
@@ -31,6 +33,7 @@ async function getItems(tableId) {
         deleteTodo(event, hidden_id.innerText);
       });
       row.appendChild(del_btn);
+      tableBody.appendChild(row);
     });
   } catch (error) {
     console.error(error);
@@ -65,6 +68,23 @@ async function deleteTodo(e, id_){
     let data = {id:id_};
     let url = 'http://localhost:3001/delete';
 
+    await fetch(url, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (!response.ok) {
+          alert("Error in deleting todo");
+        } else {
+            getItems("todoTable");
+        }
+    });
+};
+
+
+async function toggleImportance(e, id_){
+    let data = {id:id_};
+    let url = 'http://localhost:3001/important';
     await fetch(url, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},

@@ -11,7 +11,7 @@ describe("Backend tests", () => {
         expect(response.ok).toBe(true);
         let data = await response.json();
         expect(data[0].value).to.equal("do the laundry");
-        expect(data[0].important).to.equal(false);
+        expect(data[0].completed).to.equal(false);
     });
 
     test('get todo items by ok id', async () => {
@@ -20,7 +20,7 @@ describe("Backend tests", () => {
         let data = await response.json();
         expect(data.length).to.equal(1);
         expect(data[0].value).to.equal("do the laundry");
-        expect(data[0].important).to.equal(false);
+        expect(data[0].completed).to.equal(false);
     });
 
     test('get todo items by bad id', async () => {
@@ -31,7 +31,7 @@ describe("Backend tests", () => {
 
 
     test('add todo item', async () => {
-        let item = {id:null, value:"exam prep", important:true};
+        let item = {id:null, value:"exam prep", completed:true};
         const url = 'http://localhost:3001/items';
         const response = await axios.post(url, item);
         
@@ -40,11 +40,11 @@ describe("Backend tests", () => {
         expect(response2.ok).toBe(true);
         let data = await response2.json();
         expect(data[data.length-1].value).to.equal("exam prep");
-        expect(data[data.length-1].important).to.equal(true);
+        expect(data[data.length-1].completed).to.equal(true);
     });
 
     test('try add todo empty item', async () => {
-        let item = {id:null, value:"", important:true};
+        let item = {id:null, value:"", completed:true};
         const url = 'http://localhost:3001/items';
         const response = await axios.post(url, item);
         expect(response.status).to.equal(200);
@@ -53,7 +53,7 @@ describe("Backend tests", () => {
         expect(response2.ok).toBe(true);
         let data = await response2.json();
         expect(data[data.length-1].value).to.equal("exam prep");
-        expect(data[data.length-1].important).to.equal(true);
+        expect(data[data.length-1].completed).to.equal(true);
     });
 
     test('delete item false id', async () => {
@@ -67,7 +67,7 @@ describe("Backend tests", () => {
         expect(response2.ok).toBe(true);
         let data = await response2.json();
         expect(data[0].value).to.equal("do the laundry");
-        expect(data[0].important).to.equal(false);
+        expect(data[0].completed).to.equal(false);
     });
 
     test('delete item', async () => {
@@ -81,6 +81,6 @@ describe("Backend tests", () => {
         expect(response2.ok).toBe(true);
         let data = await response2.json();
         expect(data[0].value).to.equal("finish homework");
-        expect(data[0].important).to.equal(true);
+        expect(data[0].completed).to.equal(true);
     });
 });

@@ -1,6 +1,7 @@
 # TDD: Full-stack web app
 
 Tests in `backend/test/backend.test.mjs`.
+Run tests in this directory using `npm run test` or `npm run autotest`.
 
 ## Run backend
 Navigate to backend directory:
